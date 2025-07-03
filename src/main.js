@@ -1,8 +1,22 @@
-import './style.css'
+import './style.css';
+import Sidebar from "./components/Sidebar/Sidebar.js"
+import Navbar from "./components/Navbar/Navbar.js"
 
 const ACCESS_KEY = "LZU19IMPHQJS1SlRC0GuDfxpl9YOROvq6BgBk7C0OEg";
+const app = document.getElementById('app');
 
-//PRIMERO HACEMOS UNA PROMESA PARA CONSEGUIR LOS DATOS DE LA API
+app.innerHTML = `${Sidebar()}
+${Navbar()}
+`
+
+
+
+
+
+
+
+
+//HACEMOS LA FUNCION CON LA PROMESA CON COGERÁ LAS FOTOS DE LA API.
 
 
 const getImages = async () => {
@@ -23,7 +37,6 @@ const mapImages = (images) =>{
     color: image.color
   }))
 }
-
 
 
 
