@@ -4,16 +4,12 @@ import Navbar from "./components/Navbar/Navbar.js"
 
 const ACCESS_KEY = "LZU19IMPHQJS1SlRC0GuDfxpl9YOROvq6BgBk7C0OEg";
 const app = document.getElementById('app');
+const searchBtn = document.getElementById('Buscar');
+const searchInput = document.getElementById('search-input');
 
 app.innerHTML = `${Sidebar()}
 ${Navbar()}
 `
-
-
-
-
-
-
 
 
 //HACEMOS LA FUNCION CON LA PROMESA CON COGERÁ LAS FOTOS DE LA API.
@@ -36,6 +32,22 @@ const mapImages = (images) =>{
     raw_image: image.urls.raw,
     color: image.color
   }))
+  printImages(mappedImages);
+}
+
+//CREAMOS LA FUNCIÓN QUE PINTARÁ LAS FOTOS EN LA APP. 
+
+const printImages = (images) => {
+  const gallery = document.getElementById("image-gallery");
+  images.forEach(image => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+    <a href="${image.raw_image}" target="_blank" rel="noopener noreferrer">
+    <img src="${image.image}" alt="${image.alt}"/>
+    </a>
+    `;
+    gallery.appendChild(li);
+  });
 }
 
 

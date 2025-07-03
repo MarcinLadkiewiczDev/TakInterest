@@ -16,3 +16,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#image-gallery{
+  column-count: 5;
+  column-gap: 10px;
+  margin: auto;
+  width: 90%;
+}
+
+#image-gallery > li {
+  break-inside: avoid;
+  margin-bottom: 15px;
+  list-style-type: none;
+}
+
+#image-gallery > li > a{
+  width: 100%;
+  height:fit-content;
+}
+
+#image-gallery > li > a > img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit:fill;
+  border-radius: 20px;
+}

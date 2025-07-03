@@ -6,7 +6,7 @@ import  Button  from "../Button/Button";
 const Sidebar = () => `
     <aside id="sidebar">
         <nav>
-            <ul>
+            <ul class="sidebar">
                 <li><a href="#"><img class="app-logo" src="./letter-t-svgrepo-com.svg"/></a></li>
                 <li><a href="#"><img class="logo" src="./home.svg"/></a></li>
                 <li><a href="#"><img class="logo" src="./compass.svg"/></a></li>
