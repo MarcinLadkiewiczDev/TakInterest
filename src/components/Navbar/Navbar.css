@@ -40,6 +40,10 @@ main{
     color: black;
 }
 
+#search-input:focus{
+    outline: none;
+}
+
 #Buscar{
     color: black;
 }
@@ -51,3 +55,8 @@ main{
     justify-content: center;
 }
 
+.arrows{
+    display: flex;
+    gap: 20px;
+    font-weight: bolder;
+}

@@ -17,6 +17,10 @@ const Navbar = () => `
     </header>
     <main>
         <ul id="image-gallery" class="image-grid"></ul>
+        <div class="arrows">
+        ${Button("previous", "./arrow-narrow-left.svg")}
+        ${Button("next", "./arrow-narrow-right.svg")}
+        </div>
     </main>
 `
 

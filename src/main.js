@@ -9,14 +9,22 @@ ${Navbar()}
 `
 const searchBtn = document.getElementById("Buscar");
 const searchInput = document.getElementById("search-input");
+const previousPage = document.getElementById("previous");
+const nextPage = document.getElementById("next");
+
 
 //HACEMOS LA FUNCION CON LA PROMESA CON COGERÁ LAS FOTOS DE LA API.
+//almacenamos la palabra de la busqueda y la página para poder hacer la función de cambio de pagina. 
 
+let currentKeyword = "";
+let currentPage = 1;
 
-const getImages = async (keyword) => {
-  const res = await fetch(
-    `https://api.unsplash.com/search/photos?client_id=${ACCESS_KEY}&query=${keyword}&page=1&per_page=20`
-  );
+const getImages = async (keyword, page, orientation) => {
+
+  currentKeyword = keyword;
+  currentPage = page;
+  let url = `https://api.unsplash.com/search/photos?client_id=${ACCESS_KEY}&query=${keyword}&page=${page}&per_page=20`;
+  const res = await fetch(url);
   const data = await res.json();
   mapImages(data.results);
 }
@@ -52,10 +60,57 @@ const printImages = (images) => {
 //AÑADO EL EVENTO QUE ESCUCHA EL CLICK DEL BOTON BUSCAR CON EL VALOR DEL IMPUT.
 
 searchBtn.addEventListener('click', () =>{
-  getImages(searchInput.value);
+  getImages(searchInput.value, 1);
 });
+
+searchInput.addEventListener('keydown', (ev) =>{
+  if(ev.key === 'Enter'){
+    ev.preventDefault();
+    searchBtn.click();
+  }
+})
+
+//FUNCION PARA CAMBIO DE PAGINA Y AÑADO EL CURRENT PAGE ENTRE AMBOS BOTONES. 
+
+
+
+nextPage.addEventListener('click', () =>{
+  getImages(currentKeyword, currentPage + 1);
+  //esté código lo que hará será que la pagina vuelva hacia arriba para evitar tener que hacer scroll manualmente tras darle al botón. 
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  })
+  paintCurrentPage(currentPage);
+})
+
+previousPage.addEventListener('click', () => {
+  if(currentPage != 1){
+    getImages(currentKeyword, currentPage - 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    paintCurrentPage(currentPage);
+  }
+
+})
+
+//RECUPERO EL CONTENEDOR DE LAS FLECHAS. 
+//AÑADO UN NUEVO ELEMENTO QUE ME MARCARÁ LA PAGINA ENTRE AMBAS FLECHAS DE CAMBIO DE PÁGINA. 
+const arrowContainer = document.querySelector(".arrows");
+const pageNumber = document.createElement("span");
+pageNumber.textContent = currentPage;
+arrowContainer.insertBefore(pageNumber, nextPage);
+//CREO LA FUNCIÓN PARA QUE CAMBIE EL TEXTCONTENT DEL SPAN CON EL NÚMERO DE PAGINA.
+const paintCurrentPage = (currentPage) => {
+  pageNumber.textContent = '';
+  pageNumber.textContent = currentPage;
+
+}
+
 
 
 window.addEventListener('DOMContentLoaded', () =>{
-  getImages("cat");
+  getImages("cat", 1);
 });
