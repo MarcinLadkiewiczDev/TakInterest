@@ -1,4 +1,7 @@
+import "./Orientation.css";
+
 const Orientation = () => `
+<div id="orientation">
 <div class=".landscape">
     <input type="checkbox" value="landscape" id="landscape" name="orientation"/>
     <label>Landscape</label>
@@ -10,6 +13,7 @@ const Orientation = () => `
 <div class=".squarish">
     <input type="checkbox" value="squarish" id="squarish" name="orientation"/>
     <label>Squarish</label>
+</div>
 </div>
 `;
 

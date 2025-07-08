@@ -1,0 +1,22 @@
+#orientation{
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    gap: 20px;
+    padding: 30px;
+  }
+
+.landscape{
+    display: flex;
+    gap: 10px;
+}
+
+.portrait{
+    display: flex;
+    gap: 10px;
+}
+
+.squarish{
+    display: flex;
+    gap: 10px;
+}

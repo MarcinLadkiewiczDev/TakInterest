@@ -18,9 +18,7 @@ const Navbar = () => `
         </div>
     </header>
     <main>
-        <div id="orientation">
         ${Orientation()}
-        </div>
         <ul id="image-gallery" class="image-grid"></ul>
         <div class="arrows">
         ${Button("previous", "./arrow-narrow-left.svg")}
