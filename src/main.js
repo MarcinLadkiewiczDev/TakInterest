@@ -11,7 +11,9 @@ const searchBtn = document.getElementById("Buscar");
 const searchInput = document.getElementById("search-input");
 const previousPage = document.getElementById("previous");
 const nextPage = document.getElementById("next");
-
+const landscape = document.getElementById("landscape");
+const portrait = document.getElementById("portrait");
+const squarish = document.getElementById("squarish");
 
 //HACEMOS LA FUNCION CON LA PROMESA CON COGERÁ LAS FOTOS DE LA API.
 //almacenamos la palabra de la busqueda y la página para poder hacer la función de cambio de pagina. 
@@ -19,15 +21,19 @@ const nextPage = document.getElementById("next");
 let currentKeyword = "";
 let currentPage = 1;
 
-const getImages = async (keyword, page, orientation) => {
+const getImages = async (keyword, page) => {
 
   currentKeyword = keyword;
   currentPage = page;
   let url = `https://api.unsplash.com/search/photos?client_id=${ACCESS_KEY}&query=${keyword}&page=${page}&per_page=20`;
+  if(landscape.checked){url += `&orientation=landscape`}
+  if(portrait.checked){url+=`&orientation=portrait`}
+  if(squarish.checked){url+=`&orientation=squarish`}
   const res = await fetch(url);
   const data = await res.json();
   mapImages(data.results);
 }
+
 
 //FUNCION PARA MAPEAR LOS RESULTADOS DEL FETCH Y QUEDARNOS CON LO QUE NOS INTERESA 
 
@@ -35,8 +41,7 @@ const mapImages = (images) =>{
   const mappedImages = images.map((image)=>({
     alt: image.alt_description,
     image: image.urls.regular,
-    raw_image: image.urls.raw,
-    color: image.color
+    raw_image: image.urls.raw
   }))
   printImages(mappedImages);
 }
@@ -71,9 +76,6 @@ searchInput.addEventListener('keydown', (ev) =>{
 })
 
 //FUNCION PARA CAMBIO DE PAGINA Y AÑADO EL CURRENT PAGE ENTRE AMBOS BOTONES. 
-
-
-
 nextPage.addEventListener('click', () =>{
   getImages(currentKeyword, currentPage + 1);
   //esté código lo que hará será que la pagina vuelva hacia arriba para evitar tener que hacer scroll manualmente tras darle al botón. 
@@ -102,12 +104,36 @@ const arrowContainer = document.querySelector(".arrows");
 const pageNumber = document.createElement("span");
 pageNumber.textContent = currentPage;
 arrowContainer.insertBefore(pageNumber, nextPage);
+
 //CREO LA FUNCIÓN PARA QUE CAMBIE EL TEXTCONTENT DEL SPAN CON EL NÚMERO DE PAGINA.
 const paintCurrentPage = (currentPage) => {
   pageNumber.textContent = '';
   pageNumber.textContent = currentPage;
-
 }
+
+//EVENTOS PARA FILTROS DE IMAGEN
+
+landscape.addEventListener("change", () => {
+  if (landscape.checked) {
+    portrait.checked = false;
+    squarish.checked = false;
+  }
+  getImages(currentKeyword, currentPage);
+});
+portrait.addEventListener("change", () => {
+  if (portrait.checked) {
+    landscape.checked = false;
+    squarish.checked = false;
+  }
+  getImages(currentKeyword, currentPage);
+});
+squarish.addEventListener("change", () => {
+  if (squarish.checked) {
+    landscape.checked = false;
+    portrait.checked = false;
+  }
+  getImages(currentKeyword, currentPage);
+});
 
 
 
