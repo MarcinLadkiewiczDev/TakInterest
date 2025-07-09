@@ -3,22 +3,35 @@ main{
     width: 100%;
     min-height: 100vh;
 }
+#wrapper{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+#sidebar-responsive{
+    display: none;
+}
 #navbar{
     position: fixed;
     top: 0;
-    left: 70px;
+    left: 0;
     width: 100%;
     height: 70px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     padding-left: 30px;
     background-color: white;
-    z-index: 2;
+    z-index: 1;
 }
 .input-wrapper{
     display: flex;
-    width: 85%;
+    width: 80%;
     height: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -59,4 +72,66 @@ main{
     display: flex;
     gap: 20px;
     font-weight: bolder;
+}
+#app-logo{
+    display: none;
+}
+
+@media (max-width: 1200px){
+    #navbar{
+        width: 90%;
+        left: 40px;
+    }
+}
+
+
+@media (max-width: 600px){
+    main{
+        margin-top:180px;
+    }
+    #navbar{
+        left: 0;
+        padding-left: 0;
+        width: 100%;
+        height: 160px;
+        justify-content: space-between;
+    }
+
+    #wrapper{
+        width: 90%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #sidebar-responsive{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+    .nav-responsive{
+        display: flex;
+        width: 100%;
+    }
+    .ul-responsive{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        list-style-type: none;
+    }
+
+
+    #app-logo{
+        display: block;
+        width: 30px;
+        height: auto;
+    }
+
 }

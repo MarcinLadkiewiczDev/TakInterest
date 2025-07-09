@@ -7,6 +7,8 @@ import Orientation from "../Orientation_Filter/Orientation"
 
 const Navbar = () => `
     <header id="navbar">
+    <div id="wrapper">
+        <a href="#"><img id="app-logo" src="./letter-t-svgrepo-com.svg" alt"app-logo"/></a>
         <div class="input-wrapper">
             <img src="./search.svg"/>
             <input id="search-input" type="text" placeholder="Que imagenes quieres..."/>
@@ -15,6 +17,18 @@ const Navbar = () => `
         <div class="user-wrapper">
             ${Button("user", "./user.svg")}
             ${Button("options", "./caret-down.svg")}
+        </div>
+    </div>
+        <div id="sidebar-responsive">
+            <nav class="nav-responsive">
+                <ul class="ul-responsive">
+                    <li><a href="index.html"><img class="logo" src="./home.svg" alt="Home"/></a></li>
+                    <li><a href="#"><img class="logo" src="./compass.svg" alt="Explore"/></a></li>
+                    <li><a href="#"><img class="logo" src="./octagon-plus.svg" alt="Add"/></a></li>
+                    <li><a href="#"><img class="logo" src="./bell-ringing.svg" alt="Notification"/></a></li>
+                    <li><a href="#"><img class="logo" src="./message-2.svg" alt="Messages"/></a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <main>
@@ -26,6 +40,6 @@ const Navbar = () => `
         </div>
     </main>
     ${Footer()}
-`
+`;
 
 export default Navbar;
