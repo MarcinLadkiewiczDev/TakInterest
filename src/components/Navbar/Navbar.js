@@ -2,6 +2,7 @@ import "./Navbar.css";
 import Button from "../Button/Button"
 import Footer from "../Footer/Footer"
 import Orientation from "../Orientation_Filter/Orientation"
+import SidebarResponsive from "../SidebarResponsive/SidebarResponsive"
 
 //CREAMOS LA FUNCION QUE PINTARÁ LA BARRA DE BUSQUEDA EN LA APP.  
 
@@ -19,17 +20,7 @@ const Navbar = () => `
             ${Button("options", "./caret-down.svg")}
         </div>
     </div>
-        <div id="sidebar-responsive">
-            <nav class="nav-responsive">
-                <ul class="ul-responsive">
-                    <li><a href="index.html"><img class="logo" src="./home.svg" alt="Home"/></a></li>
-                    <li><a href="#"><img class="logo" src="./compass.svg" alt="Explore"/></a></li>
-                    <li><a href="#"><img class="logo" src="./octagon-plus.svg" alt="Add"/></a></li>
-                    <li><a href="#"><img class="logo" src="./bell-ringing.svg" alt="Notification"/></a></li>
-                    <li><a href="#"><img class="logo" src="./message-2.svg" alt="Messages"/></a></li>
-                </ul>
-            </nav>
-        </div>
+        ${SidebarResponsive()}
     </header>
     <main>
         ${Orientation()}

@@ -22,16 +22,21 @@ let currentKeyword = "";
 let currentPage = 1;
 
 const getImages = async (keyword, page) => {
-
   currentKeyword = keyword;
   currentPage = page;
   let url = `https://api.unsplash.com/search/photos?client_id=${ACCESS_KEY}&query=${keyword}&page=${page}&per_page=20`;
+
   if(landscape.checked){url += `&orientation=landscape`}
   if(portrait.checked){url+=`&orientation=portrait`}
   if(squarish.checked){url+=`&orientation=squarish`}
-  const res = await fetch(url);
-  const data = await res.json();
-  mapImages(data.results);
+  try{
+    const res = await fetch(url);
+    const data = await res.json();
+    mapImages(data.results);
+  } catch (error) {
+    
+  }
+  
 }
 
 

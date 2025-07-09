@@ -1,0 +1,52 @@
+@media (max-width: 600px){
+    main{
+        margin-top:140px;
+    }
+    #navbar{
+        left: 0;
+        padding-left: 0;
+        width: 100%;
+        height: 140px;
+        justify-content: space-between;
+    }
+
+    #wrapper{
+        width: 90%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #sidebar-responsive{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+    }
+    .nav-responsive{
+        display: flex;
+        width: 100%;
+        height: 70px;
+    }
+    .ul-responsive{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 90%;
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+
+    #app-logo{
+        display: block;
+        width: 30px;
+        height: auto;
+    }
+
+}

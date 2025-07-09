@@ -17,7 +17,7 @@
 }
 
 #image-gallery{
-  column-count: 5;
+  column-count: 4;
   column-gap: 10px;
   margin: auto;
   width: 90%;
@@ -48,3 +48,18 @@
   justify-content: center;
 }
 
+@media (max-width: 1200px){
+  #image-gallery{
+    width: 80%;
+    column-count: 2;
+  }
+}
+
+@media (max-width:600px){
+  #image-gallery{
+    width: 90%;
+    column-count: 1;
+    margin: auto;
+    padding-left:0;
+  }
+}
