@@ -3,7 +3,7 @@ import Sidebar from './components/Sidebar/Sidebar.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Button from './components/Button/Button.js'
 
-const ACCESS_KEY = 'LZU19IMPHQJS1SlRC0GuDfxpl9YOROvq6BgBk7C0OEg';
+const ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
 const app = document.getElementById('app');
 app.innerHTML = `${Sidebar()}
 ${Navbar()}
