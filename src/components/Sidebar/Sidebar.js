@@ -14,7 +14,7 @@ const Sidebar = () => `
                 <li><a href="#"><img class="logo" src="./bell-ringing.svg" alt="Notification"/></a></li>
                 <li><a href="#"><img class="logo" src="./message-2.svg" alt="Messages"/></a></li>
             </ul>
-            ${Button("settings", "public/settings.svg")}
+            ${Button("settings", "./settings.svg")}
         </nav>
     </aside>
 `;
