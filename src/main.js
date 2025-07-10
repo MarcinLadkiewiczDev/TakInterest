@@ -37,7 +37,6 @@ const getImages = async (keyword, page) => {
   } catch (error) {
     printButtons(searchButtons);
   }
-  
 }
 
 
@@ -71,8 +70,16 @@ const printImages = (images) => {
 //AÑADO EL EVENTO QUE ESCUCHA EL CLICK DEL BOTON BUSCAR CON EL VALOR DEL IMPUT.
 
 searchBtn.addEventListener('click', () =>{
-  getImages(searchInput.value, 1);
-});
+    getImages(searchInput.value, 1);
+    if(searchInput.value === ""){
+      const main = document.querySelector('main');
+      const title = document.querySelector('h2');
+      main.removeChild(title);
+    }
+  });
+  
+  
+
 
 searchInput.addEventListener('keydown', (ev) =>{
   if(ev.key === 'Enter'){
@@ -152,11 +159,11 @@ const printButtons = (filters) => {
   const arrows = document.querySelector('.arrows');
   const main = document.querySelector('main');
   const title = document.createElement('h2');
+  gallery.innerHTML = "";
   title.textContent = "Busqueda fallida, prueba con alguna de estas sugerencias...";
   main.insertBefore(title, gallery);
   arrows.style.display = "none";
   orientation.style.display = "none";
-  gallery.innerHTML = '';
   gallery.classList.replace("image-grid", "Buttons");
   filters.forEach((filter) => {
     const li = document.createElement('li');
